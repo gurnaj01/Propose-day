@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Propose Day 💍</title>
+
+<style>
+body {
+  background: linear-gradient(to bottom right, #fff0f6, #fef6ff);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 25px;
+  color: #6b0036;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  animation: fade 1s ease;
+}
+.page.active { display: block; }
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 { font-size: 28px; }
+.icon { font-size: 85px; margin: 15px 0; }
+
+.box {
+  background: #ffffffcc;
+  padding: 22px;
+  border-radius: 22px;
+  margin-top: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+button {
+  margin: 10px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #c7005c;
+  color: white;
+}
+button:hover { background: #a3004a; }
+
+.from {
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-110vh); }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: pink;
+  top: -10px;
+  animation: fall 3s linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+audio { display: none; }
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Keys_of_Moon/Emotional_Music/Keys_of_Moon_-_03_-_Tenderness.mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <div class="icon">💍</div>
+  <h1>Happy Propose Day</h1>
+  <div class="box">
+    <p><b>Hey Gurleen 💖</b></p>
+    <p>This is not just a website…</p>
+    <p>It’s a little game made with feelings.</p>
+    <button onclick="go(2)">Start 💕</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <div class="icon">🤍</div>
+  <h1>Question 1</h1>
+  <div class="box">
+    <p>When you see my name,</p>
+    <p>do you smile?</p>
+    <button onclick="go(3)">Yes 😊</button>
+    <button onclick="go(3)">Always 🥹</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <div class="icon">🌸</div>
+  <h1>Question 2</h1>
+  <div class="box">
+    <p>If I was with you right now,</p>
+    <p>what would you do?</p>
+    <button onclick="go(4)">Talk 💬</button>
+    <button onclick="go(4)">Just smile 🤍</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+  <div class="icon">💗</div>
+  <h1>A truth</h1>
+  <div class="box">
+    <p>You are someone</p>
+    <p>my heart chose quietly.</p>
+    <button onclick="go(5)">Continue 💌</button>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="p5">
+  <div class="icon">🌙</div>
+  <h1>A promise</h1>
+  <div class="box">
+    <p>I promise respect, care,</p>
+    <p>and honesty.</p>
+    <p>Will you accept that?</p>
+    <button onclick="go(6)">Yes 🤍</button>
+    <button onclick="go(6)">Always 💕</button>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="p6">
+  <div class="icon">💍</div>
+  <h1>The Question</h1>
+  <div class="box">
+    <p>Gurleen…</p>
+    <p>Will you be mine?</p>
+    <button onclick="yesClicked()">YES 💖</button>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="p7">
+  <div class="icon">🎉💞</div>
+  <h1>She said YES!</h1>
+  <div class="box">
+    <p>Happy Propose Day, Gurleen 💖</p>
+    <p>You unlocked a secret message…</p>
+    <button onclick="go(8)">Open 🔐</button>
+  </div>
+</div>
+
+<!-- SECRET PAGE -->
+<div class="page" id="p8">
+  <div class="icon">🥹❤️</div>
+  <h1>Secret Message</h1>
+  <div class="box">
+    <p>I may not be perfect,</p>
+    <p>but my intentions are pure.</p>
+    <p>Thank you for choosing me.</p>
+    <div class="from">— Yours, Gurnaj</div>
+  </div>
+</div>
+
+<script>
+function go(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('p'+p).classList.add('active');
+}
+
+function yesClicked(){
+  go(7);
+  for(let i=0;i<80;i++){
+    let c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.background=['#ff69b4','#ff1493','#ffc0cb'][Math.floor(Math.random()*3)];
+    c.style.animationDuration=(2+Math.random()*2)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+}
+
+// Floating hearts
+setInterval(()=>{
+  let h=document.createElement('div');
+  h.className='heart';
+  h.innerText='💖';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=(4+Math.random()*3)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},600);
+</script>
+
+</body>
+</html>
